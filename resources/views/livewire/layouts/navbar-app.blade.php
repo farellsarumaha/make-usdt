@@ -3,7 +3,6 @@
 use Livewire\Volt\Component;
 
 new class extends Component {
-
     public function logout()
     {
         Auth::guard('web')->logout();
@@ -12,46 +11,52 @@ new class extends Component {
         $this->redirect(route('home'), navigate: true);
         noty()->info('Goodbye.');
     }
-
 }; ?>
 
 <nav class="flex items-center justify-between px-4 md:px-20 py-4">
     <div class="flex items-center gap-4">
-        <x-app-icon/>
+        <x-app-icon />
         <h6 class="font-extrabold hidden md:flex">{{ config('app.name') }}</h6>
     </div>
     <div class="hidden md:flex items-center gap-4">
-        <x-alinks :href="route('home')" value="Home"/>
+        <x-alinks :href="route('home')" value="Home" class="{{ request()->routeIs('home') ? 'text-blue-800' : '' }}" />
     </div>
     <div class="flex items-center gap-1">
         <x-button data-dropdown-toggle="usersDropdown">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
             </svg>
         </x-button>
         <x-dropdown id="usersDropdown">
-            @if(Auth::check())
+            @if (Auth::check())
                 <ul class="py-2 text-sm text-gray-700">
-                    <li><x-alinks :href="route('admin.dashboard')" class="block px-4 py-2 hover:bg-stone-100" value="Dashboard"/></li>
-                    <li><x-alinks :href="route('profile')" class="block px-4 py-2 hover:bg-stone-100" value="Profile Information"/></li>
-                    <li><x-alinks href="#" class="block px-4 py-2 hover:bg-stone-100" value="Home Address"/></li>
-                    <li><x-alinks wire:click="logout()" class="block px-4 py-2 hover:bg-stone-100 cursor-pointer" value="Logout"/></li>
+                    <li><x-alinks :href="route('admin.dashboard')" class="block px-4 py-2 hover:bg-stone-100" value="Dashboard" /></li>
+                    <li><x-alinks :href="route('profile')"
+                            class="{{ request()->routeIs('profile') ? 'text-blue-800' : '' }} block px-4 py-2 hover:bg-stone-100"
+                            value="Profile Information" /></li>
+                    <li><x-alinks wire:click="logout()" class="block px-4 py-2 hover:bg-stone-100 cursor-pointer"
+                            value="Logout" /></li>
                 </ul>
             @else
                 <ul class="py-2 text-sm text-gray-700">
-                    <li><x-alinks :href="route('login')" class="block px-4 py-2 hover:bg-stone-100" value="Login"/></li>
-                    <li><x-alinks :href="route('register')" class="block px-4 py-2 hover:bg-stone-100" value="Register"/></li>
+                    <li><x-alinks :href="route('login')" class="block px-4 py-2 hover:bg-stone-100" value="Login" /></li>
+                    <li><x-alinks :href="route('register')" class="block px-4 py-2 hover:bg-stone-100" value="Register" /></li>
                 </ul>
             @endif
         </x-dropdown>
         <x-button data-dropdown-toggle="pagesDropdown" class="flex md:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
             </svg>
         </x-button>
         <x-dropdown id="pagesDropdown">
             <ul class="py-2 text-sm text-gray-700">
-                <li><x-alinks :href="route('home')" class="block px-4 py-2 hover:bg-stone-100" value="Home"/></li>
+                <li><x-alinks :href="route('home')"
+                        class="{{ request()->routeIs('home') ? 'text-blue-800' : '' }} block px-4 py-2 hover:bg-stone-100"
+                        value="Home" /></li>
             </ul>
         </x-dropdown>
     </div>

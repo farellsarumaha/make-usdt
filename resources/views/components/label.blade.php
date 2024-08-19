@@ -1,5 +1,5 @@
 @props([
-    'value' => 'Default'
+    'value' => 'Default',
 ])
 
 <label {{ $attributes->merge(['class' => 'text-sm font-medium']) }}>

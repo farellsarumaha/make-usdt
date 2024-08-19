@@ -6,7 +6,6 @@ use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
 
 new #[\Livewire\Attributes\Layout('components.layouts.guest')] class extends Component {
-
     public string $email = '';
     public string $password = '';
     public bool $remember = false;
@@ -38,7 +37,7 @@ new #[\Livewire\Attributes\Layout('components.layouts.guest')] class extends Com
         $validated = $this->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
-            'remember' => ['boolean']
+            'remember' => ['boolean'],
         ]);
 
         $this->ensureIsNotRateLimited();
@@ -58,29 +57,32 @@ new #[\Livewire\Attributes\Layout('components.layouts.guest')] class extends Com
         noty()->info('Successfully logged in.');
     }
 
-    public function toRegister() { $this->redirect(route('register'), navigate: true); }
+    public function toRegister()
+    {
+        $this->redirect(route('register'), navigate: true);
+    }
 }; ?>
 
 <form wire:submit="login()">
     <div class="flex flex-col gap-1 mb-4">
-        <x-label for="email" value="Email Address"/>
-        <x-input wire:model="email" id="email" name="email" placeholder="Email Address"/>
-        <x-error :messages="$errors->get('email')"/>
+        <x-label for="email" value="Email Address" />
+        <x-input wire:model="email" id="email" name="email" placeholder="Email Address" />
+        <x-error :messages="$errors->get('email')" />
     </div>
     <div class="flex flex-col gap-1 mb-4">
-        <x-label for="password" value="Password"/>
-        <x-input wire:model="password" id="password" name="password" placeholder="Password" type="password"/>
-        <x-error :messages="$errors->get('password')"/>
+        <x-label for="password" value="Password" />
+        <x-input wire:model="password" id="password" name="password" placeholder="Password" type="password" />
+        <x-error :messages="$errors->get('password')" />
     </div>
     <div class="flex justify-between items-center mb-4">
         <div class="flex items-center gap-1">
-            <x-checkbox wire:model="remember" id="remember" name="remember"/>
-            <x-label for="remember" value="Remember Me"/>
+            <x-checkbox wire:model="remember" id="remember" name="remember" />
+            <x-label for="remember" value="Remember Me" />
         </div>
-        <x-alinks href="{{ route('password.request') }}" value="Forgot Password?"/>
+        <x-alinks href="{{ route('password.request') }}" value="Forgot Password?" />
     </div>
     <div class="flex flex-col gap-1">
-        <x-button wire:click="login()" value="Login" color="blue" class="w-full text-sm"/>
-        <x-button wire:click="toRegister()" value="Don't have an account?" class="w-full text-sm"/>
+        <x-button wire:click="login()" value="Login" color="blue" class="w-full text-sm" />
+        <x-button wire:click="toRegister()" value="Don't have an account?" class="w-full text-sm" />
     </div>
 </form>

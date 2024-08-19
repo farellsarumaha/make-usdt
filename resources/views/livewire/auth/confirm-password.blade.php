@@ -4,7 +4,6 @@ use Illuminate\Validation\ValidationException;
 use Livewire\Volt\Component;
 
 new class extends Component {
-
     public string $password = '';
 
     /**
@@ -16,10 +15,12 @@ new class extends Component {
             'password' => ['required', 'string'],
         ]);
 
-        if (!Auth::guard('web')->validate([
-            'email' => Auth::user()->email,
-            'password' => $this->password,
-        ])) {
+        if (
+            !Auth::guard('web')->validate([
+                'email' => Auth::user()->email,
+                'password' => $this->password,
+            ])
+        ) {
             throw ValidationException::withMessages([
                 'password' => __('auth.password'),
             ]);
@@ -37,15 +38,16 @@ new class extends Component {
 
 <form wire:submit="confirmPassword()">
     <div class="flex mb-4">
-        <p class="text-xs text-justify">This is a secure area of the application. Please confirm your password before continuing.</p>
+        <p class="text-xs text-justify">This is a secure area of the application. Please confirm your password before
+            continuing.</p>
     </div>
     <div class="flex flex-col gap-1 mb-4">
-        <x-label for="password" value="Password"/>
-        <x-input wire:model="password" id="password" name="password" placeholder="Password" type="password"/>
-        <x-error :messages="$errors->get('password')"/>
+        <x-label for="password" value="Password" />
+        <x-input wire:model="password" id="password" name="password" placeholder="Password" type="password" />
+        <x-error :messages="$errors->get('password')" />
     </div>
     <div class="flex flex-col gap-1">
-        <x-button wire:click="confirmPassword()" value="Confirm Password" color="blue" class="w-full text-sm"/>
-        <x-button wire:click="toHome()" value="Back to Home" class="w-full text-sm"/>
+        <x-button wire:click="confirmPassword()" value="Confirm Password" color="blue" class="w-full text-sm" />
+        <x-button wire:click="toHome()" value="Back to Home" class="w-full text-sm" />
     </div>
 </form>
