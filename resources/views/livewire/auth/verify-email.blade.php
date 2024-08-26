@@ -1,33 +1,3 @@
-<?php
-
-use Livewire\Volt\Component;
-
-new #[\Livewire\Attributes\Layout('components.layouts.guest')] class extends Component {
-    public function sendVerification(): void
-    {
-        if (Auth::user()->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('home', absolute: false), navigate: true);
-            return;
-        }
-        Auth::user()->sendEmailVerificationNotification();
-        noty()->info('A new verification link has been sent to the email address you provided during registration.');
-    }
-
-    public function logout()
-    {
-        Auth::guard('web')->logout();
-        Session::invalidate();
-        Session::regenerateToken();
-        $this->redirect(route('home'), navigate: true);
-        noty()->info('Goodbye.');
-    }
-
-    public function toHome()
-    {
-        $this->redirect(route('home'), navigate: true);
-    }
-}; ?>
-
 <div>
     <div class="flex mb-4">
         <p class="text-xs text-justify">Thanks for signing up! Before getting started, could you verify your email
