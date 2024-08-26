@@ -1,18 +1,3 @@
-<?php
-
-use Livewire\Volt\Component;
-
-new class extends Component {
-    public function logout(): void
-    {
-        Auth::guard('web')->logout();
-        Session::invalidate();
-        Session::regenerateToken();
-        $this->redirect(route('home'), navigate: true);
-        noty()->info('Goodbye.');
-    }
-}; ?>
-
 <nav class="w-full flex items-center justify-between px-4 md:px-20 py-4">
     <div class="flex items-center gap-4 md:hidden">
         <x-button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar">

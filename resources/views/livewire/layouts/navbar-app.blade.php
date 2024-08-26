@@ -1,18 +1,3 @@
-<?php
-
-use Livewire\Volt\Component;
-
-new class extends Component {
-    public function logout()
-    {
-        Auth::guard('web')->logout();
-        Session::invalidate();
-        Session::regenerateToken();
-        $this->redirect(route('home'), navigate: true);
-        noty()->info('Goodbye.');
-    }
-}; ?>
-
 <nav class="flex items-center justify-between px-4 md:px-20 py-4">
     <div class="flex items-center gap-4">
         <x-app-icon />

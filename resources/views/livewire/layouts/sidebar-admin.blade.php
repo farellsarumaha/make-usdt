@@ -1,11 +1,3 @@
-<?php
-
-use Livewire\Volt\Component;
-
-new class extends Component {
-    //
-}; ?>
-
 <aside id="logo-sidebar"
     class="fixed top-0 md:top-24 left-0 z-40 w-64 h-screen pt-32 bg-white transition-transform -translate-x-full md:translate-x-0"
     aria-label="Sidebar">
