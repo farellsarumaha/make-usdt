@@ -1,3 +1,3 @@
 <x-layouts.admin title="Users">
-    <livewire:admin.users-table />
+    {{-- Problem Table --}}
 </x-layouts.admin>
