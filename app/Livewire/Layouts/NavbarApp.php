@@ -2,13 +2,16 @@
 
 namespace App\Livewire\Layouts;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class NavbarApp extends Component
 {
-    public function logout()
+    public function logout(): void
     {
         Auth::guard('web')->logout();
         Session::invalidate();
@@ -17,7 +20,7 @@ class NavbarApp extends Component
         noty()->info('Goodbye.');
     }
 
-    public function render()
+    public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.layouts.navbar-app');
     }

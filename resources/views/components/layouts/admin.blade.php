@@ -13,8 +13,8 @@
 
 <body>
     <livewire:layouts.navbar-admin />
-    <livewire:layouts.sidebar-admin />
-    <main class="p-4 pt-0 md:pr-9 md:p-20 md:ml-56 md:mt-12 mt-32">
+    <livewire:layouts.menu-admin/>
+    <main class="p-4 md:px-56 md:py-16">
         {{ $slot }}
     </main>
     @stack('script-chart') <!-- type="module" -->

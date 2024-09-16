@@ -1,6 +1,6 @@
 <nav class="w-full flex items-center justify-between px-4 md:px-20 py-4">
-    <div class="flex items-center gap-4 md:hidden">
-        <x-button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar">
+    <div class="flex items-center gap-4">
+        <x-button data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
