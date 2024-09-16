@@ -1,4 +1,3 @@
-import "flowbite";
 import {initFlowbite} from "flowbite";
 
 import Alpine from 'alpinejs';
