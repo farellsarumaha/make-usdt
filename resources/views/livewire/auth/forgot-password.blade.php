@@ -7,13 +7,13 @@
         </p>
     </div>
     <div class="flex flex-col gap-1 mb-4">
-        <x-label for="email" value="Email Address" />
-        <x-input wire:model="email" id="email" name="email" placeholder="Email Address" />
-        <x-error :messages="$errors->get('email')" />
+        <x-forms.label for="email" value="Email Address" />
+        <x-forms.input wire:model="email" id="email" name="email" placeholder="Email Address" />
+        <x-forms.error :messages="$errors->get('email')" />
     </div>
     <div class="flex flex-col gap-1">
-        <x-button wire:click="sendPasswordResetLink()" value="Forgot Password" color="blue" class="w-full text-sm" />
-        <x-button wire:click="toRegister()" value="Don't have an account?" class="w-full text-sm" />
-        <x-button wire:click="toLogin()" value="Already have an account?" class="w-full text-sm" />
+        <x-buttons.blue-button type="submit" name="Forgot Password"/>
+        <x-buttons.default-button wire:click="toRegister()" name="Don't have an account?"/>
+        <x-buttons.default-button wire:click="toLogin()" name="Already have an account?"/>
     </div>
 </form>

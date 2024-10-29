@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Auth;
 
-use Auth;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -17,7 +20,6 @@ class ConfirmPassword extends Component
         $this->validate([
             'password' => ['required', 'string'],
         ]);
-
         if (
             !Auth::guard('web')->validate([
                 'email' => Auth::user()->email,
@@ -28,18 +30,17 @@ class ConfirmPassword extends Component
                 'password' => __('auth.password'),
             ]);
         }
-
         session(['auth.password_confirmed_at' => time()]);
-        $this->redirectIntended(default: route('home', absolute: false), navigate: true);
+        $this->redirectRoute('home');
         noty()->info('Successful, do not tell your password to anyone.');
     }
 
-    public function toHome()
+    public function toHome(): void
     {
-        $this->redirect(route('home'), navigate: true);
+        $this->redirectRoute('home');
     }
 
-    public function render()
+    public function render(): Factory|Application|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.auth.confirm-password');
     }

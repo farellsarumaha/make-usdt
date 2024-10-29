@@ -2,9 +2,13 @@
 
 namespace App\Livewire\Profile;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class ChangePassword extends Component
@@ -18,7 +22,7 @@ class ChangePassword extends Component
         try {
             $validated = $this->validate([
                 'current_password' => ['required', 'string', 'current_password'],
-                'password' => ['required', 'string', \Illuminate\Validation\Rules\Password::default(), 'confirmed'],
+                'password' => ['required', 'string', Password::default(), 'confirmed'],
             ]);
         } catch (ValidationException $e) {
             $this->reset('current_password', 'password', 'password_confirmation');
@@ -35,7 +39,7 @@ class ChangePassword extends Component
         $this->dispatch('password-updated');
         noty()->info('Successfully changed password.');
     }
-    public function render()
+    public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.profile.change-password');
     }

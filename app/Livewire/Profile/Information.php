@@ -3,8 +3,11 @@
 namespace App\Livewire\Profile;
 
 use App\Models\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class Information extends Component
@@ -46,11 +49,9 @@ class Information extends Component
         }
 
         $user->save();
-
-        $this->dispatch('profile-updated', name: $user->name);
         noty()->info('Successfully changed profile information.');
     }
-    public function render()
+    public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.profile.information');
     }

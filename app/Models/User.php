@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use phpDocumentor\Reflection\Types\Integer;
 
+/**
+ * @method static create(array $validated)
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;

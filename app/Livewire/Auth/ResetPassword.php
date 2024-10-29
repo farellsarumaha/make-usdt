@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Auth;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Password;
@@ -46,11 +49,11 @@ class ResetPassword extends Component
             $this->addError('email', __($status));
             return;
         }
-        $this->redirect(route('home'), navigate: true);
+        $this->redirectRoute('home');
         noty()->info('Successfully change password, always remember your password and do not tell anyone.');
     }
 
-    public function render()
+    public function render(): Factory|Application|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.auth.reset-password');
     }

@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Layouts;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class NavbarAdmin extends Component
@@ -13,11 +16,11 @@ class NavbarAdmin extends Component
         Auth::guard('web')->logout();
         Session::invalidate();
         Session::regenerateToken();
-        $this->redirect(route('home'), navigate: true);
+        $this->redirectRoute('home');
         noty()->info('Goodbye.');
     }
 
-    public function render()
+    public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.layouts.navbar-admin');
     }

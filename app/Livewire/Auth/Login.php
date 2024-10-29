@@ -3,11 +3,14 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Auth\Events\Lockout;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -42,7 +45,7 @@ class Login extends Component
 
     public function login(): void
     {
-        $validated = $this->validate([
+        $this->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
             'remember' => ['boolean'],
@@ -50,7 +53,7 @@ class Login extends Component
 
         $this->ensureIsNotRateLimited();
 
-        if (!Auth::attempt($this->only(['email', 'password']), is_bool($this->remember))) {
+        if (!Auth::attempt($this->only(['email', 'password']), $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -61,16 +64,16 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
 
         Session::regenerate();
-        $this->redirectIntended(default: route('home', absolute: false), navigate: true);
+        $this->redirectRoute('home');
         noty()->info('Successfully logged in.');
     }
 
-    public function toRegister()
+    public function toRegister(): void
     {
-        $this->redirect(route('register'), navigate: true);
+        $this->redirectRoute('register');
     }
 
-    public function render()
+    public function render(): Factory|Application|\Illuminate\Contracts\View\View|View
     {
         return view('livewire.auth.login');
     }

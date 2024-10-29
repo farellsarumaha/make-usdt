@@ -1,39 +1,29 @@
 <nav class="w-full flex items-center justify-between px-4 md:px-20 py-4">
     <div class="flex items-center gap-4">
-        <x-button data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+        <x-buttons.default-button data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
             </svg>
-        </x-button>
+        </x-buttons.default-button>
     </div>
     <div class="flex items-center gap-4">
         <x-app-icon />
         <h6 class="font-extrabold hidden md:flex">{{ config('app.name') }}</h6>
     </div>
     <div class="flex items-center gap-1">
-        <x-button data-dropdown-toggle="usersDropdown">
+        <x-buttons.default-button data-dropdown-toggle="usersDropdown">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
             </svg>
-        </x-button>
-        <x-dropdown id="usersDropdown">
+        </x-buttons.default-button>
+        <x-dropdown.menu id="usersDropdown">
             <ul class="py-2 text-sm text-gray-700">
-                <li>
-                    <x-alinks :href="route('home')" class="block px-4 py-2 hover:bg-stone-100" value="Back to Home" />
-                </li>
-                <li>
-                    <x-alinks :href="route('profile')"
-                        class="{{ request()->routeIs('profile') ? 'text-blue-800' : '' }} block px-4 py-2 hover:bg-stone-100"
-                        value="Profile Information" />
-                </li>
-                <li>
-                    <x-alinks wire:click="logout()" class="block px-4 py-2 hover:bg-stone-100 cursor-pointer"
-                        value="Logout" />
-                </li>
+                <li><x-dropdown.a-default request="profile" name="Profile Information"/></li>
+                <li><x-dropdown.button wire:click="logout()" name="Logout"/></li>
             </ul>
-        </x-dropdown>
+        </x-dropdown.menu>
     </div>
 </nav>

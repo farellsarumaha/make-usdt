@@ -16,7 +16,7 @@ class NavbarApp extends Component
         Auth::guard('web')->logout();
         Session::invalidate();
         Session::regenerateToken();
-        $this->redirect(route('home'), navigate: true);
+        $this->redirectRoute('home');
         noty()->info('Goodbye.');
     }
 

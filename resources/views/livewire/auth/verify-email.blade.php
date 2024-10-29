@@ -5,8 +5,8 @@
             you another.</p>
     </div>
     <div class="flex flex-col gap-1">
-        <x-button wire:click="sendVerification()" value="Send Verification Code" color="blue" class="w-full text-sm" />
-        <x-button wire:click="logout()" value="Logout" class="w-full text-sm" />
-        <x-button wire:click="toHome()" value="Back to Home" class="w-full text-sm" />
+        <x-buttons.blue-button wire:click="sendVerification()" name="Send Verification Code"/>
+        <x-buttons.default-button wire:click="logout()" name="Logout"/>
+        <x-buttons.default-button wire:click="toHome()" name="Back to Home"/>
     </div>
 </div>
