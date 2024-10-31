@@ -16,6 +16,7 @@
     <main class="p-4 md:p-20">
         {{ $slot }}
     </main>
+    @livewire('wire-elements-modal')
     @stack('script-chart') <!-- type="module" -->
 </body>
 

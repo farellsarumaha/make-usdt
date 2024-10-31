@@ -14,9 +14,10 @@
 <body>
     <livewire:layouts.navbar-admin />
     <livewire:layouts.menu-admin/>
-    <main class="p-4 md:px-56 md:py-16">
+    <main class="p-4 md:px-32 md:py-16">
         {{ $slot }}
     </main>
+    @livewire('wire-elements-modal')
     @stack('script-chart') <!-- type="module" -->
 </body>
 

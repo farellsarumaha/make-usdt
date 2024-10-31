@@ -49,7 +49,7 @@ class Information extends Component
         }
 
         $user->save();
-        noty()->info('Successfully changed profile information.');
+        noty()->addInfo('Successfully changed profile information.');
     }
     public function render(): Application|Factory|\Illuminate\Contracts\View\View|View
     {

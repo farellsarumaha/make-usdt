@@ -19,6 +19,7 @@
         <div class="p-4 shadow max-w-md w-full">
             {{ $slot }}
         </div>
+        @livewire('wire-elements-modal')
     </main>
 </body>
 
