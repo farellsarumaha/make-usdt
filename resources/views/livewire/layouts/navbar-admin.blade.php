@@ -1,15 +1,8 @@
 <nav class="w-full flex items-center justify-between px-4 md:px-20 py-4">
     <div class="flex items-center gap-4">
-        <x-buttons.default-button data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
-            </svg>
-        </x-buttons.default-button>
-    </div>
-    <div class="flex items-center gap-4">
-        <x-app-icon />
-        <h6 class="font-extrabold hidden md:flex">{{ config('app.name') }}</h6>
+        <h6 class="font-extrabold hidden md:flex">{{ config('app.name') }} </h6>
+        <span>|</span>
+        <p class="text-xs bg-gray-600 px-2 py-1 rounded-lg text-white">Admin Panel</p>
     </div>
     <div class="flex items-center gap-1">
         <x-buttons.default-button data-dropdown-toggle="usersDropdown">
@@ -25,5 +18,11 @@
                 <li><x-dropdown.button wire:click="logout()" name="Logout"/></li>
             </ul>
         </x-dropdown.menu>
+        <x-buttons.default-button data-drawer-target="menu-admin" data-drawer-placement="right" data-drawer-show="menu-admin" aria-controls="menu-admin">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+            </svg>
+        </x-buttons.default-button>
     </div>
 </nav>

@@ -1,6 +1,6 @@
-<div id="drawer-navigation" class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-64 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
+<div id="menu-admin" class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="menu-admin-label">
     <div class="flex justify-end items-center">
-        <x-buttons.default-button data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation">
+        <x-buttons.default-button data-drawer-hide="menu-admin" aria-controls="menu-admin">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
