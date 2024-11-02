@@ -4,25 +4,34 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Blade;
 use Livewire\Attributes\On;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
+use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 
 final class UserTable extends PowerGridComponent
 {
+    use WithExport;
+
     public string $tableName = 'user-table-z8yfwp-table';
 
+    /** @noinspection PhpUndefinedMethodInspection */
     public function header(): array
     {
-        /** @noinspection PhpUndefinedMethodInspection */
         return [
             Button::add('bulk-delete')
-                ->slot('Delete All')
+                ->slot(__('Delete All'))
                 ->class('text-sm p-2 border border-red-200 bg-red-800 hover:bg-red-900 text-white rounded-lg flex justify-center items-center')
                 ->openModal('users.users-delete-all', ['tableName' => $this->tableName]),
+            Button::add('create')
+                ->slot(__('Create'))
+                ->class('text-sm p-2 border border-blue-200 bg-blue-800 hover:bg-blue-900 text-white rounded-lg flex justify-center items-center')
+                ->openModal('users.users-create', []),
         ];
     }
 
@@ -32,6 +41,7 @@ final class UserTable extends PowerGridComponent
         if($this->checkboxValues){
             User::destroy($this->checkboxValues);
             $this->js('window.pgBulkActions.clearAll()');
+            $this->checkboxAll = false;
             noty()->info('Successfully deleted users.');
         }else{
             noty()->error('Please select at least one user');
@@ -43,8 +53,16 @@ final class UserTable extends PowerGridComponent
         $this->showCheckBox();
 
         return [
+            PowerGrid::exportable('export')
+                ->striped()
+                ->columnWidth([
+                    2 => 30,
+                ])
+                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+
             PowerGrid::header()
-                ->showSearchInput(),
+                ->showSearchInput()
+                ->withoutLoading(),
             PowerGrid::footer()
                 ->showPerPage(perPageValues: [5, 10, 20, 50, 100])
                 ->showRecordCount(mode: 'short')
@@ -64,6 +82,8 @@ final class UserTable extends PowerGridComponent
             ->add('lastname')
             ->add('username')
             ->add('email')
+            ->add('email_verified_at')
+            ->add('email_verified_at_label', fn ($entry) => Blade::render('<x-tables.verified-rows verified="' . $entry->email_verified_at . '"/>'))
             ->add('created_at');
     }
 
@@ -72,26 +92,12 @@ final class UserTable extends PowerGridComponent
     {
         return [
             Column::make('Id', 'id'),
-            Column::make('Firstname', 'firstname')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Lastname', 'lastname')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Username', 'username')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Email', 'email')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Created at', 'created_at')
-                ->sortable()
-                ->searchable(),
-
+            Column::make('Firstname', 'firstname')->sortable()->searchable(),
+            Column::make('Lastname', 'lastname')->sortable()->searchable(),
+            Column::make('Username', 'username')->sortable()->searchable(),
+            Column::make('Email', 'email')->sortable()->searchable(),
+            Column::make('Verified', 'email_verified_at_label'),
+            Column::make('Created at', 'created_at')->sortable()->searchable(),
             Column::action('Action')
         ];
     }

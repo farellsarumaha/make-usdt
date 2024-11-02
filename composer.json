@@ -10,6 +10,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "livewire/volt": "^1.6",
+        "openspout/openspout": "^4.26",
         "php-flasher/flasher-noty-laravel": "^2.1",
         "power-components/livewire-powergrid": "^6.0",
         "wire-elements/modal": "^2.0"
