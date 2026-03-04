@@ -1,73 +1,38 @@
 <!--suppress JSUnresolvedReference -->
-<div
-    x-data="{ open: false, countChecked: @entangle('checkboxValues').live }"
-    x-on:keydown.esc="open = false"
-    x-on:click.outside="open = false;"
->
-    <button
-        @click.prevent="open = true"
-        class="text-sm p-2 border border-green-200 bg-green-800 hover:bg-green-900 text-white rounded-lg flex justify-center items-center"
-    >
-        <div class="flex">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-            </svg>
-        </div>
-    </button>
-
-    <div
-        x-cloak
-        x-show="open"
-        x-transition:enter="transition ease-out duration-100"
-        x-transition:enter-start="transform opacity-0 scale-95"
-        x-transition:enter-end="transform opacity-100 scale-100"
-        x-transition:leave="transition ease-in duration-75"
-        x-transition:leave-start="transform opacity-100 scale-100"
-        x-transition:leave-end="transform opacity-0 scale-95"
-        class="absolute z-10 mt-2 rounded-md dark:bg-pg-primary-700 bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-        tabindex="-1"
-        @keydown.tab="open = false"
-        @keydown.enter.prevent="open = false;"
-        @keyup.space.prevent="open = false;"
-    >
+<x-buttons.green-button data-dropdown-toggle="exportDropdown">
+    <span class="inline-flex justify-center items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 sm:size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25M9 16.5v.75m3-3v3M15 12v5.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+        <p class="hidden sm:block">Export</p>
+    </span>
+</x-buttons.green-button>
+<x-dropdown.menu id="exportDropdown">
+    <div class="grid grid-rows-2 grid-cols-1 gap-1" x-data="{ countChecked: @entangle('checkboxValues').live }">
         @if (in_array('xlsx', data_get($setUp, 'exportable.type')))
-            <div class="flex items-center px-4 py-1 text-pg-primary-400 dark:text-pg-primary-300 border-b border-pg-primary-100 dark:border-pg-primary-600">
-                <span class="w-12">@lang('XLSX')</span>
-                <button
-                    wire:click.prevent="exportToXLS"
-                    x-on:click="open = false"
-                    href="#"
-                    class="px-2 py-1 block text-pg-primary-800 hover:bg-pg-primary-100 hover:text-black-300 dark:text-pg-primary-200 dark:hover:bg-pg-primary-800 rounded"
-                >
-                    <span class="export-count text-xs">({{ $total }})</span>
+            <div class="flex justify-between items-center w-full px-2 py-1">
+                <span class="w-12 font-semibold">@lang('XLSX')</span>
+                <button wire:click.prevent="exportToXLS" class="py-2 px-1 hover:!text-blue-700 text-xs">
+                    <span class="export-count">({{ $total }})</span>
                     @if (count($enabledFilters) === 0)
                         @lang('livewire-powergrid::datatable.labels.all')
                     @else
                         @lang('livewire-powergrid::datatable.labels.filtered')
                     @endif
-
                 </button>
                 @if ($checkbox)
-                    <button wire:click.prevent="exportToXLS(true)"
-                       x-on:click="open = false"
-                       x-bind:disabled="countChecked.length === 0"
-                       :class="{'cursor-not-allowed' : countChecked.length === 0}"
-                       class="px-2 py-1 block text-pg-primary-800 hover:bg-pg-primary-100 hover:text-black-300 dark:text-pg-primary-200 dark:hover:bg-pg-primary-800 rounded"
-                    >
-                        <span class="export-count text-xs" x-text="`(${countChecked.length})`"></span> @lang('livewire-powergrid::datatable.labels.selected')
+                    <button wire:click.prevent="exportToXLS(true)" class="py-2 px-1 text-xs" :class="countChecked.length === 0 ? 'cursor-not-allowed' : 'hover:!text-blue-700'">
+                        <span x-text="`(${countChecked.length})`"></span>
+                        @lang('livewire-powergrid::datatable.labels.selected')
                     </button>
                 @endif
             </div>
         @endif
         @if (in_array('csv', data_get($setUp, 'exportable.type')))
-            <div class="flex items-center px-4 py-1 text-pg-primary-400 dark:text-pg-primary-300">
-                <span class="w-12">@lang('CSV')</span>
-                <button
-                    wire:click.prevent="exportToCsv"
-                    x-on:click="open = false"
-                    class="px-2 py-1 block text-pg-primary-800 hover:bg-pg-primary-100 hover:text-black-300 dark:text-pg-primary-200 dark:hover:bg-pg-primary-800 rounded"
-                >
-                    <span class="export-count text-xs">({{ $total }})</span>
+            <div class="flex justify-between items-center w-full px-2 py-1">
+                <span class="w-12 font-semibold">@lang('CSV')</span>
+                <button class="py-2 px-1 hover:!text-blue-700 text-xs" wire:click.prevent="exportToCsv">
+                    <span class="export-count">({{ $total }})</span>
                     @if (count($enabledFilters) === 0)
                         @lang('livewire-powergrid::datatable.labels.all')
                     @else
@@ -75,16 +40,12 @@
                     @endif
                 </button>
                 @if ($checkbox)
-                    <button
-                        wire:click.prevent="exportToCsv(true)"
-                        x-on:click="open = false"
-                        :class="{'cursor-not-allowed' : countChecked.length === 0}"
-                        class="px-2 py-1 block text-pg-primary-800 hover:bg-pg-primary-100 hover:text-black-300 dark:text-pg-primary-200 dark:hover:bg-pg-primary-800 rounded"
-                    >
-                        <span class="export-count text-xs" x-text="`(${countChecked.length})`"></span> @lang('livewire-powergrid::datatable.labels.selected')
+                    <button wire:click.prevent="exportToCsv(true)" class="py-2 px-1  text-xs"  :class="countChecked.length === 0 ? 'cursor-not-allowed' : 'hover:!text-blue-700'">
+                        <span x-text="`(${countChecked.length})`"></span>
+                        @lang('livewire-powergrid::datatable.labels.selected')
                     </button>
                 @endif
             </div>
         @endif
     </div>
-</div>
+</x-dropdown.menu>

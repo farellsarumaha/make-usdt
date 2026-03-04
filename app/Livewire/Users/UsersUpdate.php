@@ -17,9 +17,12 @@ class UsersUpdate extends ModalComponent
     public string $firstname = '';
     public string $lastname = '';
 
+    public $roles = [];
+
     public function mount(): void
     {
         $this->user = User::where('username', $this->getUsername)->first();
+        $this->roles = $this->user->roles()->pluck('name')->toArray();
         $this->firstname = $this->user->firstname;
         $this->lastname = $this->user->lastname;
     }
@@ -39,6 +42,15 @@ class UsersUpdate extends ModalComponent
         ]);
         /* Update User */
         $this->user->update($validated);
+        /* Check Checked Box & Delete Roles*/
+        if(!$this->roles){
+            $this->user->roles()->detach();
+        }else{
+            /* Added Roles in a user */
+            foreach ($this->roles as $role) {
+                $this->user->assignRole($role);
+            }
+        }
         noty()->info('User: ' . $this->getUsername . ' updated successfully!');
         /* Close Modal */
         $this->closeModal();

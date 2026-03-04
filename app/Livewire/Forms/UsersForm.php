@@ -18,7 +18,7 @@ class UsersForm extends Form
     public $password = '';
     public $password_confirmation = '';
 
-    public function create(): void
+    public function create($roles): void
     {
         $validated = $this->validate([
             'firstname' => ['required', 'string', 'max:255'],
@@ -28,7 +28,10 @@ class UsersForm extends Form
             'password' => ['required', 'string', 'confirmed', Password::default()],
         ]);
         $validated['password'] = Hash::make($validated['password']);
-        User::create($validated);
+        $user = User::create($validated);
+        foreach ($roles as $role) {
+            $user->assignRole($role);
+        }
         $this->reset();
     }
 
